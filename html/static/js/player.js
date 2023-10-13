@@ -49,7 +49,7 @@ class FormatLoader {
 		video.currentTime = lastTime
 		if (this.npa) {
 			audio.src = this.npa.url
-			audio.pause()
+			//audio.pause()
 			audio.currentTime = lastTime
 		} else {
 			audio.pause()
@@ -120,8 +120,8 @@ function playbackIntervention(event) {
 			target.ready = false;
 			break;
 		case "seeked":
-			target.ready = false;
-			target.pause();
+			//target.ready = false;
+			//target.pause();
 			other.currentTime = target.currentTime;
 			break;
 		case "play":
@@ -129,8 +129,10 @@ function playbackIntervention(event) {
 			otherPlayManager.play();
 			break;
 		case "pause":
-			other.currentTime = target.currentTime;
-			other.pause();
+			if (document.hasFocus()) {
+			  other.currentTime = target.currentTime;
+			  other.pause();
+			}
 		case "playing":
 			other.currentTime = target.currentTime;
 			break;
