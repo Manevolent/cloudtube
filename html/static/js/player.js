@@ -134,7 +134,9 @@ function playbackIntervention(event) {
 			  other.pause();
 			}
 		case "playing":
-			other.currentTime = target.currentTime;
+			if (other.currentTime < target.currentTime) {
+				other.currentTime = target.currentTime 
+			}
 			break;
 		case "ratechange":
 			other.playbackRate = target.playbackRate;
