@@ -119,10 +119,19 @@ function playbackIntervention(event) {
 		case "durationchange":
 			target.ready = false;
 			break;
+		case "seeking":
+			if (target === video && !video.paused) {
+			    audio.pause();
+			}
+			break;
 		case "seeked":
 			//target.ready = false;
 			//target.pause();
 			other.currentTime = target.currentTime;
+
+			if (target === video && !video.paused && audio.paused) {
+			    audio.play();
+			}
 			break;
 		case "play":
 			other.currentTime = target.currentTime;
